@@ -1,0 +1,23 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  font-family: sans-serif;
+  background: rgb(2,0,36);
+  background: linear-gradient(349deg, rgba(2,0,36,1) 0%, rgba(15,15,140,1) 26%, rgba(0,212,255,1) 100%);
+  color: #fff;
+}
+.heading {
+  padding: 60px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
