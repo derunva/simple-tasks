@@ -138,6 +138,27 @@ body {
       cursor: pointer;
     }
   }
+  &--task-form {
+    padding: 10px;
+    background: #f4f4f4;
+    display: flex;
+    color: #333;
+    align-items: center;
+    form {
+      display: flex;
+      margin-left: 10px;
+      flex: 1 1 auto;
+      input {
+        padding: 0 15px;
+        height: 30px;
+        line-height: 30px;
+        flex: 1 1 auto;
+      }
+      button {
+        padding: 0 15px;
+      }
+    }
+  }
 }
 .main-enter-active {
   transition: all .3s ease;

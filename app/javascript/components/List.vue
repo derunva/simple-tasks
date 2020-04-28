@@ -11,6 +11,13 @@
       <i @click="deleteList(list)" class="far fa-trash-alt"></i>
     </div>
   </div>
+  <div class="list--task-form">
+    <i class="fas fa-plus"></i>
+    <form>
+      <input type="text" placeholder="Start typing here to create a task ...">
+      <button>Add Task</button>
+    </form>
+  </div>
 </div>
 </template>
 
