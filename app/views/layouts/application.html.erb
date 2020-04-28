@@ -4,7 +4,8 @@
     <title>Tasks</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'tasks', media: 'all' %>
@@ -12,6 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page">
+      <div class="wrapper">
+        <%= yield %>
+      </div>
+    </div>
+    <div class="copyright">
+      @2020
+    </div>
   </body>
 </html>

@@ -1,11 +1,21 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <NameForm/>
+    <div class="add-list-button">
+      <button>
+        <i class="fas fa-plus"></i>
+        Add TODO List
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
+import NameForm from './components/NameForm.vue'
 export default {
+  components: {
+    NameForm
+  },
   data: function () {
     return {
       message: "Hello Vue!"
