@@ -11,12 +11,30 @@ export default new Vuex.Store({
     lists: []
   },
   mutations: {
+    ADD_TASK (state, payload) {
+      state.lists = _.map(state.lists, (list) => {
+        if (list.id === payload.list_id) {
+          list.tasks.push(payload)
+        }
+        return list
+      })
+    },
+    DELETE_TASK (state, payload) {
+      state.lists = _.map(state.lists, (list) => {
+        list.tasks = _.filter(list.tasks, (task) => {
+          console.log(task);
+          return task.id !== payload
+        })
+        return list
+      })
+    },
     UPDATE_LIST (state, payload) {
       state.lists = _.map(state.lists, (list) => {
         return list.id === payload.id ? payload : list;
       })
        console.log(state.lists);
     },
+
     DELETE_LIST (state, payload) {
       state.lists = _.filter(state.lists, (x) => {
         return x.id !== payload
@@ -50,6 +68,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    addTask ({ commit }, payload) {
+      commit('ADD_TASK', payload)
+    },
+    deleteTask ({ commit }, payload) {
+      commit('DELETE_TASK', payload)
+    },
     deleteList ({ commit }, payload) {
       commit('DELETE_LIST', payload)
     },

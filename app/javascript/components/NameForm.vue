@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="form">
   <div class="form--inner">
-    <h2>Add {{formState.name}}</h2>
+    <h2> {{formState.name}}</h2>
     <form @submit.prevent="submit">
       <input type="text" v-model="name" placeholder="Title">
       <button class="button"><i class="fas fa-save"></i></button>

@@ -24,6 +24,51 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
+.application {
+  overflow-x: auto;
+}
+.task {
+  background: #ffc6a0;
+  display: flex;
+  padding: 0 10px;
+  color: #333;
+  align-items: center;
+  border-bottom: 3px solid rgba(255, 255, 255, .6);
+  &:last-child {
+    border-radius: 0 0 4px 4px;
+    border-bottom: 0;
+  }
+  &--status {
+    margin-right: 10px;
+    border-right: 3px solid rgba(255, 255, 255, .6);
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  &--name {
+    flex: 1 1 auto;
+    margin-right: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-right: 3px solid rgba(255, 255, 255, .6);
+  }
+  &--optionals {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    opacity: 0;
+    i {
+      margin: 0 4px;
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    background: #ffd7bd;
+  }
+  &:hover &--optionals {
+    opacity: 1;
+  }
+}
 .page {
   position: fixed;
   top: 0;
@@ -119,6 +164,14 @@ body {
 .errors {
   font-size: .8em;
   margin: 5px 0;
+  .list & {
+    margin: 0;
+    padding: 5px 10px 5px 35px;
+    background: #ff5700;
+  }
+}
+#app {
+  min-width: 360px;
 }
 .list {
   margin: 40px 0;
@@ -156,6 +209,7 @@ body {
       }
       button {
         padding: 0 15px;
+        white-space: nowrap;
       }
     }
   }
