@@ -17,6 +17,11 @@ export default new Vuex.Store({
       })
        console.log(state.lists);
     },
+    DELETE_LIST (state, payload) {
+      state.lists = _.filter(state.lists, (x) => {
+        return x.id !== payload
+      })
+    },
     CLOSE_FORM (state) {
       state.formState = {}
     },
@@ -45,6 +50,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    deleteList ({ commit }, payload) {
+      commit('DELETE_LIST', payload)
+    },
     setLists ({ commit }, payload) {
       commit('SET_LISTS', payload)
     },

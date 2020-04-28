@@ -8,7 +8,7 @@
     <div class="list--optionals">
       <i @click="listToEdit(list)" class="fas fa-pencil-alt"></i>
       |
-      <i class="far fa-trash-alt"></i>
+      <i @click="deleteList(list)" class="far fa-trash-alt"></i>
     </div>
   </div>
 </div>
@@ -18,6 +18,18 @@
 export default {
   props: ['list'],
   methods: {
+    deleteList (item) {
+      var res = confirm(`Are you sure want to delete record ${item.name} ?`);
+      if (res) {
+        this.$axios.delete(`/lists/${item.id}.json`)
+        .then(res => {
+          this.$store.dispatch('deleteList', item.id)
+        })
+        .catch(err => {
+          console.log(Object.assign({}, err));
+        })
+      }
+    },
     listToEdit (item) {
       this.$store.dispatch('editList', item)
     }
