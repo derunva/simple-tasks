@@ -3,11 +3,11 @@
     <div class="task--status">
       <input @change="statusChange($event)" type="checkbox" :checked="task.status">
     </div>
-    <div class="task--name">
+    <div class="task--name" @blur="save($event)" :contenteditable="editable">
       {{task.name}}
     </div>
     <div class="task--optionals">
-      <i @click="taskToEdit(task)" class="fas fa-pencil-alt"></i>
+      <i @click="editable = true" title="will updated on blur" class="fas fa-pencil-alt"></i>
       |
       <i @click="deleteTask()" class="far fa-trash-alt"></i>
     </div>
@@ -19,7 +19,26 @@ export default {
   props: [
     'task'
   ],
+  data () {
+    return {
+      editable: false
+    }
+  },
   methods: {
+    save (evt) {
+      this.$axios.put(`/tasks/${this.task.id}.json`, {
+        "task": {
+          "name": evt.target.innerHTML
+        }
+      })
+      .then(res => {
+        console.log(res.data);
+        this.editable = false
+      })
+      .catch(err => {
+        console.log(Object.assign({}, err));
+      })
+    },
     deleteTask () {
       this.$axios.delete(`/tasks/${this.task.id}.json`)
       .then(res => {

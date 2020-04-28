@@ -110,6 +110,7 @@ body {
     background: linear-gradient(349deg, rgba(255,137,57,1) 0%, rgba(255,103,0,1) 26%, rgba(255,103,0,1) 100%);
   }
 }
+
 .form {
   position: fixed;
   top: 0;
@@ -169,6 +170,10 @@ body {
     padding: 5px 10px 5px 35px;
     background: #ff5700;
   }
+}
+div[contenteditable="true"] {
+  cursor: pointer;
+  background: #ff5700;
 }
 #app {
   min-width: 360px;
