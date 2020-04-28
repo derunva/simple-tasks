@@ -5,9 +5,11 @@
     <div class="list--name">
       {{list.name}}
     </div>
-    <form>
-      <input type="text" v-model="name">
-    </form>
+    <div class="list--optionals">
+      <i @click="listToEdit(list)" class="fas fa-pencil-alt"></i>
+      |
+      <i class="far fa-trash-alt"></i>
+    </div>
   </div>
 </div>
 </template>
@@ -15,10 +17,9 @@
 <script>
 export default {
   props: ['list'],
-  data () {
-    return {
-      name: "",
-      editable: false
+  methods: {
+    listToEdit (item) {
+      this.$store.dispatch('editList', item)
     }
   }
 }

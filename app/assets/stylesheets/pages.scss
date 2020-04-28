@@ -116,3 +116,36 @@ body {
     }
   }
 }
+.errors {
+  font-size: .8em;
+  margin: 5px 0;
+}
+.list {
+  margin: 40px 0;
+  &--heading {
+    display: flex;
+    background: linear-gradient(349deg, rgba(255,137,57,1) 0%, rgba(255,103,0,1) 26%, rgba(255,103,0,1) 100%);
+    padding: 10px 20px;
+    border-radius: 4px 4px 0 0;
+    font-size: 1.3em;
+  }
+  &--name {
+    margin-left: 10px;
+    margin-right: auto;
+  }
+  &--optionals {
+    i {
+      cursor: pointer;
+    }
+  }
+}
+.main-enter-active {
+  transition: all .3s ease;
+}
+.main-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.main-enter, .main-leave-to {
+  transform: scale(.5);
+  opacity: 0;
+}
