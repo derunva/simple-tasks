@@ -7,6 +7,10 @@
       {{task.name}}
     </div>
     <div class="task--optionals">
+      <i @click="downTask()" class="fas fa-long-arrow-alt-down"></i>
+      |
+      <i @click="upTask()" class="fas fa-long-arrow-alt-up"></i>
+      |
       <i @click="editable = true" title="will updated on blur" class="fas fa-pencil-alt"></i>
       |
       <i @click="deleteTask()" class="far fa-trash-alt"></i>
@@ -25,6 +29,24 @@ export default {
     }
   },
   methods: {
+    downTask () {
+      this.$axios.get(`/down_position/${this.task.id}.json`)
+      .then(res => {
+        this.$store.dispatch('setLists', res.data)
+      })
+      .catch(err => {
+        console.log(Object.assign({}, err));
+      })
+    },
+    upTask () {
+      this.$axios.get(`/up_position/${this.task.id}.json`)
+      .then(res => {
+        this.$store.dispatch('setLists', res.data)
+      })
+      .catch(err => {
+        console.log(Object.assign({}, err));
+      })
+    },
     save (evt) {
       this.$axios.put(`/tasks/${this.task.id}.json`, {
         "task": {

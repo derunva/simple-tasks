@@ -1,15 +1,39 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :update, :destroy]
+  before_action :set_task, only: [:show, :update, :destroy, :up_position, :down_position]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.order('position').all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+  end
+
+  def down_position
+    task = @task.next
+    if task
+      taskNextOldPos = task.position
+      task.position = @task.position
+      @task.position = taskNextOldPos
+      task.save()
+      @task.save()
+    end
+    render json: List.all.includes(:tasks).all.as_json(include: :tasks)
+  end
+
+  def up_position
+    task = @task.prev
+    if task
+      taskNextOldPos = task.position
+      task.position = @task.position
+      @task.position = taskNextOldPos
+      task.save()
+      @task.save()
+    end
+    render json: List.all.includes(:tasks).all.as_json(include: :tasks)
   end
 
   # POST /tasks

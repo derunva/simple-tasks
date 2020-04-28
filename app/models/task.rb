@@ -8,4 +8,12 @@ class Task < ApplicationRecord
   def set_defaults
     self.status = false if self.status.nil?
   end
+
+  def next
+    list.tasks.where("position > ?", self.position).order("position").first
+  end
+
+  def prev
+    list.tasks.where("position < ?", self.position).order("position").last
+  end
 end
