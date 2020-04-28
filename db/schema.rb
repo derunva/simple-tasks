@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_162739) do
+ActiveRecord::Schema.define(version: 2020_04_28_184857) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
@@ -19,11 +22,12 @@ ActiveRecord::Schema.define(version: 2020_04_28_162739) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "list_id", null: false
+    t.bigint "list_id", null: false
     t.string "name"
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "position", default: -> { "nextval('position_seq'::regclass)" }
     t.index ["list_id"], name: "index_tasks_on_list_id"
   end
 
